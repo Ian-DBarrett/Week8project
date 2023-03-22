@@ -1,5 +1,7 @@
 package uk.ac.abertay.cmp309.week8;
 
+import static uk.ac.abertay.cmp309.week8.Utils.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,11 +61,18 @@ public class MainActivity extends AppCompatActivity {
             /* Get network capabilities */
             Network net = connManager.getActiveNetwork();
             NetworkCapabilities netCaps = connManager.getNetworkCapabilities(net);
-            /* TODO: Check capabilities */
+            /* TODO: Check capabilities,/ */
+
+            if(netCaps.hasTransport(NetworkCapabilities.TRANSPORT_WIFI))
+                Log.i(TAG,"connection is wifi");
 
             /* TODO: Display connection status, update UI, etc. */
+            if(netCaps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET))
+                Log.i(TAG,"You are connected to the internet");
         } else {
             /* TODO: Report the lack of connection to the user! */
+            Log.e(TAG,"No connection!!");
+            //return connManager.getActiveNetwork() !=null && connManager.getActiveNetworkInfo().isConnected();
         }
     }
 
@@ -105,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(Utils.TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(Utils.TAG, "Error adding document", e);
+                        Log.w(TAG, "Error adding document", e);
                     }
                 });
 
