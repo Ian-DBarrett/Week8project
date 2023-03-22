@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "68481116394",
+    "project_id": "cmp309-f06e3",
+    "storage_bucket": "cmp309-f06e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68481116394:android:529103c00bc250cc928f93",
+        "android_client_info": {
+          "package_name": "uk.ac.abertay.cmp309.week8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68481116394-rf1ug7fvmmkqnr8goscdllaod6tklgvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHEYKzfisXBDPgXMI7YgaYe-o48DrGA6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68481116394-rf1ug7fvmmkqnr8goscdllaod6tklgvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
