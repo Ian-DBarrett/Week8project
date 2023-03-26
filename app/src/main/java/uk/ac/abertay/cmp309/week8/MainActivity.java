@@ -14,6 +14,9 @@ import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
     };
 
     ConnectivityManager connManager;
+
+    TelephonyManager telephonyManager;
+
+    PhoneStateListener phoneStateListener;
     boolean isConnected = false;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -41,15 +48,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        getSystemService(Context.TELEPHONY_SERVICE);
+
+
+       
+
+
+
+
+
+
+        //DOSE THIS CODE MEAN I DON'T NEED TO CHECK FOR PHONE AND SMS PERMISHONS?
         /* Check all permissions using the custom utility class and request them */
         if (!Utils.checkAllPermissions(this, permissions)) {
             requestPermissions(permissions, 0);
+            telephonyManager.listen(phoneStateListener,
+                    PhoneStateListener.LISTEN_CALL_STATE);
+
+
         }
+
         /* Initialise the connectivity manager object, do this before starting any network operations */
         connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkRequest networkRequest = new NetworkRequest.Builder()
                 .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
                 .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+
                 .build();
         /* Register callback to monitor for changes */
         connManager.registerNetworkCallback(networkRequest, netCallback);
