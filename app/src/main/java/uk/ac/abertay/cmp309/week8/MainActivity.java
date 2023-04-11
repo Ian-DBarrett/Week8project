@@ -130,9 +130,13 @@ public class MainActivity extends AppCompatActivity {
     *   the ContactListActivity as a result, query the document with matching id from Firestore,
     *   and replace the data with new input from text fields. */
 
+
+
     /* NOTE! This is just a normal variable declaration for Network Callback,
     * it is outside functions but inside the class.
     * This was done so to keep the top of the document tidy */
+
+
     ConnectivityManager.NetworkCallback netCallback = new ConnectivityManager.NetworkCallback() {
         @Override
         public void onLost(Network network) {
