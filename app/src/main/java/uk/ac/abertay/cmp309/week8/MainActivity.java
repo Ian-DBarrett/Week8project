@@ -20,6 +20,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,12 +51,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        getSystemService(Context.TELEPHONY_SERVICE);
+        telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 
-
-       
-
-
+        // Create PhoneStateListener
+        phoneStateListener = new PhoneStateListener() {
+            @Override
+            public void onCallStateChanged(int state, String phoneNumber) {
+                switch (state) {
+                    case TelephonyManager.CALL_STATE_IDLE: {
+                        Toast.makeText(MainActivity.this, "Phone state: IDLE", Toast.LENGTH_SHORT).show();
+                        Log.d("PHONESTATE", "Phone state: IDLE");
+                    }
+                    break;
+                    case TelephonyManager.CALL_STATE_RINGING: {
+                        Toast.makeText(MainActivity.this, "Phone state: RINGING", Toast.LENGTH_SHORT).show();
+                        Log.d("PHONESTATE", "Phone state: RINGING");
+                    }
+                    break;
+                    case TelephonyManager.CALL_STATE_OFFHOOK: {
+                        Toast.makeText(MainActivity.this, "Phone state: OFFHOOK", Toast.LENGTH_SHORT).show();
+                        Log.d("PHONESTATE", "Phone state: OFFHOOK");
+                    }
+                    break;
+                    default: {
+                        Toast.makeText(MainActivity.this, "Unknown phone state", Toast.LENGTH_SHORT).show();
+                        Log.d("PHONESTATE", "Unknown phone state");
+                    }
+                    break;
+                }
+            }
+        };
 
 
 
@@ -66,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(permissions, 0);
             telephonyManager.listen(phoneStateListener,
                     PhoneStateListener.LISTEN_CALL_STATE);
+
+
 
 
         }
