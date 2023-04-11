@@ -1,5 +1,7 @@
 package uk.ac.abertay.cmp309.week8;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,10 +43,22 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+                //Intent i = new Intent (Intent.ACTION_DIAL, Uri.parse("tel:"));
+                Intent call = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "143478888"));
+
+//                Intent call = new Intent(Intent.ACTION_CALL);
+
                 FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
-                Log.d(Utils.TAG, "SELECTED CONTACT:  " + contact.toString());
+                Log.d(TELEPHONY_SERVICE, contact.getPhone() + call);
+
+
+                //MAKE A CALL HEAR!!
+
+               startActivity(call);
+
 
                 /* TODO: return selected item's id to MainActivity for editing */
+
             }
         });
 
