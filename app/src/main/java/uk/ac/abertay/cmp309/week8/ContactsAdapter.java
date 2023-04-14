@@ -1,6 +1,8 @@
 package uk.ac.abertay.cmp309.week8;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,12 @@ public class ContactsAdapter extends ArrayAdapter<FirestoreContact> {
         display_name.setText(contact.getFirst()+" "+contact.getLast());
         display_email.setText(contact.getEmail());
         display_phone.setText(contact.getPhone());
+
+
+
+
+
+
         /* Return the completed view to render on screen. */
         return convertView;
     }
