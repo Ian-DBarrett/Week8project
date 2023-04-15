@@ -44,15 +44,20 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 //Intent i = new Intent (Intent.ACTION_DIAL, Uri.parse("tel:"));
-                Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "115"));
+                //Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "115"));
 
 //                Intent call = new Intent(Intent.ACTION_CALL);
 
                 FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
-                Log.d(TELEPHONY_SERVICE, contact.getPhone() + call);
+                Log.d(TELEPHONY_SERVICE, contact.getPhone());
 
 
+
+
+                Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse(contact.getPhone()));
                 //MAKE A CALL HEAR!!
+                Uri num = Uri.parse("tel:+" + call);
+                call.setData(num);
 
                  startActivity(call);
 
