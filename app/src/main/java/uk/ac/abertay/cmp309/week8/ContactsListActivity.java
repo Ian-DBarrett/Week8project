@@ -1,5 +1,7 @@
 package uk.ac.abertay.cmp309.week8;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,6 +39,12 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
         /* Get reference to list view */
         list = findViewById(R.id.list_contacts);
 
+
+        //@Override
+       // public Dialog select(Bundle savedInstanceState)  {
+        //    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //}
+
         /* Set on item click listener to output the clicked contact's details to log */
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -52,22 +60,20 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
                 Log.d(TELEPHONY_SERVICE, contact.getPhone());
 
 
+//                Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse(contact.getPhone()));
+//                //MAKE A CALL HEAR!!
+//                Uri num = Uri.parse("tel:+" + call);
+//                call.setData(num);
 
-
-                Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse(contact.getPhone()));
+                Uri num = Uri.parse("tel:+" + contact.getPhone());
+                Intent call = new Intent(Intent.ACTION_DIAL, num);
                 //MAKE A CALL HEAR!!
-                Uri num = Uri.parse("tel:+" + call);
-                call.setData(num);
 
                  startActivity(call);
-
-
-                /* TODO: return selected item's id to MainActivity for editing */
-
             }
         });
 
-        /* TODO: implement the contact deleting functionality using onItemLongClickListener */
+
 
         /* Add a listener to the entire collection of contact which will notify of changes */
         contacts.addSnapshotListener(this);
@@ -117,8 +123,8 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
             * all documents have been deleted form the collection. */
             if(queryDocumentSnapshots!=null && !queryDocumentSnapshots.isEmpty()) {
                 /* Clears adapter and creates a new data list */
-                /* TODO: clearing an entire list and repopulating it is not efficient,
-                *   try to improve this.  */
+
+
                 adapter.clear();
                 data = new ArrayList<>();
                 /* Gets all documents in the affected collection */
