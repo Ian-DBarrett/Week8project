@@ -2,6 +2,7 @@ package uk.ac.abertay.cmp309.week8;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,25 +52,36 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                //Intent i = new Intent (Intent.ACTION_DIAL, Uri.parse("tel:"));
-                //Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "115"));
 
-//                Intent call = new Intent(Intent.ACTION_CALL);
+                //SMS TEXT hear
+                AlertDialog.Builder builder = new AlertDialog.Builder(ContactsListActivity.this);
+                builder.setMessage("text or call")
+                        .setPositiveButton("Call", new DialogInterface.OnClickListener() {
 
-                FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
-                Log.d(TELEPHONY_SERVICE, contact.getPhone());
+                            public void onClick(DialogInterface dialog, int id) {
+                                // START THE GAME!
+                                FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
+                                Log.d(TELEPHONY_SERVICE, contact.getPhone());
+
+                                Uri num = Uri.parse("tel:+" + contact.getPhone());
+                                Intent call = new Intent(Intent.ACTION_DIAL, num);
+                                //MAKE A CALL HEAR
+                                startActivity(call);
+                            }
+                        })
+                        .setNegativeButton("text", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancelled the dialog
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                // Create the Alert dialog
+                AlertDialog alertDialog = builder.create();
+                // Show the Alert Dialog box
+                alertDialog.show();
 
 
-//                Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse(contact.getPhone()));
-//                //MAKE A CALL HEAR!!
-//                Uri num = Uri.parse("tel:+" + call);
-//                call.setData(num);
 
-                Uri num = Uri.parse("tel:+" + contact.getPhone());
-                Intent call = new Intent(Intent.ACTION_DIAL, num);
-                //MAKE A CALL HEAR!!
-
-                 startActivity(call);
             }
         });
 
