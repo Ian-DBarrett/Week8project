@@ -22,10 +22,7 @@ public class SMSactivity extends AppCompatActivity {
 
         txtMobile = findViewById(R.id.smsPhone);
 
-        Intent smstext = new Intent(Intent.ACTION_VIEW);
-        smstext.putExtra("address",new String[]{smstext.getAction().toString()});
-        smstext.putExtra("sms_body",txtMessage.getText().toString());
-        smstext.setType("vnd.android-dir/mms-sms");
+
 
 
 
@@ -39,8 +36,15 @@ public class SMSactivity extends AppCompatActivity {
     }
     private void sendtext(){
         try{
-            SmsManager smgr = SmsManager.getDefault();
-            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+            Intent smstext = new Intent(Intent.ACTION_SEND);
+//        smstext.putExtra("address",new String[]{smstext.getAction().toString()});
+//            sms.setData(Uri.parse("smsto:"));
+            smstext.putExtra("sms_body",txtMessage.getText().toString());
+            smstext.setType("vnd.android-dir/mms-sms");
+            startActivity(smstext);
+
+//            SmsManager smgr = SmsManager.getDefault();
+//            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
             Toast.makeText(SMSactivity.this, "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
