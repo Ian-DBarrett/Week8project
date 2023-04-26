@@ -7,7 +7,7 @@
     tools:context=".SMSactivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/smsbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sendtext"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/smstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

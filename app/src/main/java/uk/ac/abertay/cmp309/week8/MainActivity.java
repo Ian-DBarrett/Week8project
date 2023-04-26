@@ -115,16 +115,16 @@ public class MainActivity extends AppCompatActivity {
             /* Get network capabilities */
             Network net = connManager.getActiveNetwork();
             NetworkCapabilities netCaps = connManager.getNetworkCapabilities(net);
-            /* TODO: Check capabilities,/ */
+
 
             if(netCaps.hasTransport(NetworkCapabilities.TRANSPORT_WIFI))
                 Log.i(TAG,"connection is wifi");
 
-            /* TODO: Display connection status, update UI, etc. */
+
             if(netCaps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET))
                 Log.i(TAG,"You are connected to the internet");
         } else {
-            /* TODO: Report the lack of connection to the user! */
+
             Log.e(TAG,"No connection!!");
             //return connManager.getActiveNetwork() !=null && connManager.getActiveNetworkInfo().isConnected();
         }
@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
     public void buttonHandler(View view) {
         switch (view.getId()) {
             case R.id.btnView:
-                /* TODO: Replace this with startActivityForResult to return the selected contact ID */
                 startActivity(new Intent(MainActivity.this, ContactsListActivity.class));
                 break;
             case R.id.btnSave:
@@ -180,9 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* TODO: implement editContact method which will use the id of the contact returned from
-    *   the ContactListActivity as a result, query the document with matching id from Firestore,
-    *   and replace the data with new input from text fields. */
 
 
 
@@ -194,12 +190,12 @@ public class MainActivity extends AppCompatActivity {
     ConnectivityManager.NetworkCallback netCallback = new ConnectivityManager.NetworkCallback() {
         @Override
         public void onLost(Network network) {
-            /* TODO: report the loss to the user and disable the functionality that depends on it */
+
         }
 
         @Override
         public void onLosing(Network network, int maxMsToLive) {
-            /* TODO: report the potential loss to the user */
+
         }
 
         @Override

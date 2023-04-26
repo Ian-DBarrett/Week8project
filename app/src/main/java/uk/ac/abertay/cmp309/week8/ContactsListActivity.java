@@ -71,6 +71,7 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
                         })
                         .setNegativeButton("text", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                startActivity(new Intent(ContactsListActivity.this, SMSactivity.class));
                                 // User cancelled the dialog
                             }
                         });
