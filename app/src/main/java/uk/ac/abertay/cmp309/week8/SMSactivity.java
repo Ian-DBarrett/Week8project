@@ -43,6 +43,7 @@ public class SMSactivity extends AppCompatActivity {
             smstext.setType("vnd.android-dir/mms-sms");
             startActivity(smstext);
 
+
 //            SmsManager smgr = SmsManager.getDefault();
 //            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
             Toast.makeText(SMSactivity.this, "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
