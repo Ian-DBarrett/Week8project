@@ -10,6 +10,7 @@
         android:id="@+id/smsbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="smsclickb"
         android:text="Sendtext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
         app:layout_constraintVertical_bias="0.396" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/smsPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -18,20 +18,14 @@ public class SMSactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smsactivity);
 
+        txtMessage = findViewById(R.id.smstext);
 
-        try{
-            SmsManager smgr = SmsManager.getDefault();
-            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
-            Toast.makeText(SMSactivity.this, "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e){
-            Toast.makeText(SMSactivity.this, "SMS Failed to Send, Please try again", Toast.LENGTH_SHORT).show();
-        }
+        txtMobile = findViewById(R.id.smsPhone);
 
-
-
-
-
+        Intent smstext = new Intent(Intent.ACTION_VIEW);
+        smstext.putExtra("address",new String[]{smstext.getAction().toString()});
+        smstext.putExtra("sms_body",txtMessage.getText().toString());
+        smstext.setType("vnd.android-dir/mms-sms");
 
 
 
@@ -41,13 +35,18 @@ public class SMSactivity extends AppCompatActivity {
          case R.id.smsbutton:
             sendtext();
             break;
-    }
+       }
     }
     private void sendtext(){
-        Intent smstext = new Intent(Intent.ACTION_VIEW);
-        smstext.putExtra("address",new String[]{txtMobile.getText().toString()});
-        smstext.putExtra("sms_body",txtMessage.getText().toString());
-        smstext.setType("vnd.android-dir/mms-sms");
+        try{
+            SmsManager smgr = SmsManager.getDefault();
+            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+            Toast.makeText(SMSactivity.this, "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e){
+            Toast.makeText(SMSactivity.this, "SMS Failed to Send, Please try again", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 }
