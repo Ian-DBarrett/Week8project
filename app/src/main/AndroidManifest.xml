@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".EmailActivety"
+            android:exported="false" />
+        <activity
             android:name=".SMSactivity"
             android:exported="false" />
         <activity

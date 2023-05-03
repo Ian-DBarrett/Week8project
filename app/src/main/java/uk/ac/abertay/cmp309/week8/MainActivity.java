@@ -200,17 +200,17 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onUnavailable() {
-            /* TODO: report the loss to the user and disable the functionality that depends on it */
+
         }
 
         @Override
         public void onAvailable(Network network) {
-            /* TODO: report the new connection and resume enable the network functionality */
+
         }
 
         @Override
         public void onCapabilitiesChanged(Network network, NetworkCapabilities networkCapabilities) {
-           /* TODO: report the change in capabilities and adjust the app behaviour accordingly */
+
         }
     };
 
@@ -221,5 +221,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    /* TODO: if returning result from ContactsListActivity, @Override onActivityResult method */
+
 }

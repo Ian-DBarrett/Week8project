@@ -55,11 +55,11 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
 
                 //SMS TEXT hear
                 AlertDialog.Builder builder = new AlertDialog.Builder(ContactsListActivity.this);
-                builder.setMessage("text or call")
+                builder.setMessage("text call or email")
                         .setPositiveButton("Call", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int id) {
-                                // START THE GAME!
+
                                 FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
                                 Log.d(TELEPHONY_SERVICE, contact.getPhone());
 
@@ -74,18 +74,21 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
                                 startActivity(new Intent(ContactsListActivity.this, SMSactivity.class));
                                 // User cancelled the dialog
                             }
-                        });
+                        })
+                        .setNeutralButton("email", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                startActivity(new Intent(ContactsListActivity.this, EmailActivety.class));
+                                // User cancelled the dialog
+                            }
+                        })
+                ;
                 // Create the AlertDialog object and return it
                 // Create the Alert dialog
                 AlertDialog alertDialog = builder.create();
                 // Show the Alert Dialog box
                 alertDialog.show();
-
-
-
             }
         });
-
 
 
         /* Add a listener to the entire collection of contact which will notify of changes */
@@ -136,7 +139,6 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
             * all documents have been deleted form the collection. */
             if(queryDocumentSnapshots!=null && !queryDocumentSnapshots.isEmpty()) {
                 /* Clears adapter and creates a new data list */
-
 
                 adapter.clear();
                 data = new ArrayList<>();
