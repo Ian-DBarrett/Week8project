@@ -20,14 +20,8 @@ public class SMSactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smsactivity);
-
         txtMessage = findViewById(R.id.smstext);
-
         txtMobile = findViewById(R.id.smsPhone);
-
-
-
-
 
     }
     public void smsclickb(View view) {
@@ -46,7 +40,6 @@ public class SMSactivity extends AppCompatActivity {
             smstext.setType("vnd.android-dir/mms-sms");
             startActivity(smstext);
 
-
 //            SmsManager smgr = SmsManager.getDefault();
 //            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
             Toast.makeText(SMSactivity.this, "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
@@ -54,7 +47,6 @@ public class SMSactivity extends AppCompatActivity {
         catch (Exception e){
             Toast.makeText(SMSactivity.this, "SMS Failed to Send, Please try again", Toast.LENGTH_SHORT).show();
         }
-
 
     }
     public class IncomingSmsReceiver extends AppCompatActivity {
