@@ -77,7 +77,11 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
                         })
                         .setNeutralButton("email", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                startActivity(new Intent(ContactsListActivity.this, EmailActivety.class));
+                                FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
+                                //Log.d(AC, contact.getEmail());
+                                Intent mail = new Intent(ContactsListActivity.this, EmailActivety.class);
+                                mail.putExtra("ename",contact.getEmail());
+                                startActivity(mail);
                                 // User cancelled the dialog
                             }
                         })
