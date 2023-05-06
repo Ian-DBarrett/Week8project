@@ -31,7 +31,7 @@ public class EmailActivety extends AppCompatActivity {
 
 
         }
-        
+
 
         public void onsend() {
             String to = email.toString();
