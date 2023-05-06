@@ -22,11 +22,11 @@ public class EmailActivety extends AppCompatActivity {
         setContentView(R.layout.email_activity);
         String emailname = getIntent().getStringExtra("ename");
 
-        EditText email = findViewById(R.id.EmailAddress);
-        EditText emailsub = findViewById(R.id.emailsubject);
-        EditText emailimput = findViewById(R.id.emailimput);
+        email = findViewById(R.id.EmailAddress);
+        emailsub = findViewById(R.id.emailsubject);
+        emailimput = findViewById(R.id.emailimput);
 
-        int findViewById = (R.id.buttonE);
+        //int findViewById = (R.id.buttonE);
         email.setText(emailname);
 
 
