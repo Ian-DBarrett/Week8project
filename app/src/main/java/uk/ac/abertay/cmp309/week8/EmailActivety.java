@@ -34,7 +34,7 @@ public class EmailActivety extends AppCompatActivity {
 
 
         public void onsend() {
-            String to = email.toString();
+            String to = email.getText().toString();
             String subject = emailsub.getText().toString();
             String message = emailimput.getText().toString();
 
