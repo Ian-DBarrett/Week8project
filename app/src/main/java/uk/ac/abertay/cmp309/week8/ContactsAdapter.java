@@ -31,10 +31,13 @@ public class ContactsAdapter extends ArrayAdapter<FirestoreContact> {
         TextView display_name = (TextView) convertView.findViewById(R.id.display_name);
         TextView display_email = (TextView) convertView.findViewById(R.id.display_email);
         TextView display_phone = (TextView) convertView.findViewById(R.id.display_phone);
+        TextView display_postcode = (TextView) convertView.findViewById(R.id.display_postcode);
+
         /* Add the data to the template view. */
         display_name.setText(contact.getFirst()+" "+contact.getLast());
         display_email.setText(contact.getEmail());
         display_phone.setText(contact.getPhone());
+        display_postcode.setText(contact.getPostcode());
 
 
 

@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.etLastName)).setText("");
         ((EditText) findViewById(R.id.etEmail)).setText("");
         ((EditText) findViewById(R.id.etPhone)).setText("");
+        ((EditText) findViewById(R.id.etpostcode)).setText("");
     }
 
     /* Adds contacts to Firestore */
@@ -161,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
         contact.put(FirestoreContact.KEY_LAST, ((EditText) findViewById(R.id.etLastName)).getText().toString());
         contact.put(FirestoreContact.KEY_EMAIL, ((EditText) findViewById(R.id.etEmail)).getText().toString());
         contact.put(FirestoreContact.KEY_PHONE, ((EditText) findViewById(R.id.etPhone)).getText().toString());
+        contact.put(FirestoreContact.KEY_Postcode, ((EditText) findViewById(R.id.etpostcode)).getText().toString());
+
 
         /* Add a new document with a generated ID (name) */
         db.collection(FirestoreContact.COLLECTION_PATH).add(contact)

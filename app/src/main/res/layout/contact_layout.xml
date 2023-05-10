@@ -25,4 +25,10 @@
         android:id="@+id/display_phone"
         android:text="phone number" />
 
+    <TextView
+        android:id="@+id/display_postcode"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:text="postcode" />
+
 </LinearLayout>
