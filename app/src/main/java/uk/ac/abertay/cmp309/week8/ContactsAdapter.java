@@ -42,8 +42,6 @@ public class ContactsAdapter extends ArrayAdapter<FirestoreContact> {
 
 
 
-
-
         /* Return the completed view to render on screen. */
         return convertView;
     }

@@ -71,21 +71,30 @@ public class ContactsListActivity extends AppCompatActivity implements EventList
                         })
                         .setNegativeButton("text", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                startActivity(new Intent(ContactsListActivity.this, SMSactivity.class));
-                                // User cancelled the dialog
+                                FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
+                                Log.d(TELEPHONY_SERVICE, contact.getPhone());
+
+
+                                Intent num2 = new Intent(ContactsListActivity.this, SMSactivity.class);
+                                num2.putExtra("tname",contact.getPhone());
+                                startActivity(num2);
+
                             }
                         })
+
                         .setNeutralButton("email", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 FirestoreContact contact = (FirestoreContact) parent.getAdapter().getItem(position);
-                                //Log.d(AC, contact.getEmail());
+
+
                                 Intent mail = new Intent(ContactsListActivity.this, EmailActivety.class);
                                 mail.putExtra("ename",contact.getEmail());
                                 startActivity(mail);
-                                // User cancelled the dialog
+
                             }
                         })
                 ;
+
                 // Create the AlertDialog object and return it
                 // Create the Alert dialog
                 AlertDialog alertDialog = builder.create();

@@ -6,7 +6,7 @@ public class FirestoreContact {
     public static final String KEY_LAST = "last";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PHONE = "phone";
-    public static final String KEY_Postcode = "postcode";
+    public static final String KEY_POSTCODE = "postcode";
 
     private String first;
     private String last;
